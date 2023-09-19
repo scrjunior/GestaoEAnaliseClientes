@@ -1,10 +1,9 @@
-﻿using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
+﻿using GestaoEAnaliseClientes.model;
+using GestaoEAnaliseClientes.util;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using GestaoEAnaliseClientes.util;
-using GestaoEAnaliseClientes.model;
-
+using System.Windows.Forms;
 
 namespace GestaoEAnaliseClientes.dao
 {
@@ -21,7 +20,7 @@ namespace GestaoEAnaliseClientes.dao
 
         public void OpenConnection()
         {
-            if (connection.State != System.Data.ConnectionState.Open)
+            if (connection.State != ConnectionState.Open)
             {
                 connection.Open();
             }
@@ -29,67 +28,89 @@ namespace GestaoEAnaliseClientes.dao
 
         public void CloseConnection()
         {
-            if (connection.State != System.Data.ConnectionState.Closed)
+            if (connection.State != ConnectionState.Closed)
             {
                 connection.Close();
             }
         }
 
-        public DataTable GetTestDataFromTestando()
-        {
-            DataTable dataTable = new DataTable();
-            string query = "SELECT `Nome`, `Apelido`, `Cliente Tipo` FROM testando;\r\n";
 
+
+        public void InsertDataIntoTestando(Cliente cliente, string serviceName, string packageName)
+        {
             try
             {
                 OpenConnection();
 
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                // Step 1: Insert client data into the 'clientes' table
+                string clientInsertQuery = "INSERT INTO clientes (`Nome`, `Apelido`, `clienteTipo`, `Região`, `Endereço`) VALUES (@Nome, @Apelido, @ClienteTipo, @Região, @Endereço)";
+                using (MySqlCommand clientInsertCmd = new MySqlCommand(clientInsertQuery, connection))
                 {
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    clientInsertCmd.Parameters.AddWithValue("@Nome", cliente.Nome);
+                    clientInsertCmd.Parameters.AddWithValue("@Apelido", cliente.Apelido);
+                    clientInsertCmd.Parameters.AddWithValue("@ClienteTipo", cliente.ClienteTipo);
+                    clientInsertCmd.Parameters.AddWithValue("@Região", cliente.Região);
+                    clientInsertCmd.Parameters.AddWithValue("@Endereço", cliente.Endereço);
+
+                    // Execute the client insertion query
+                    clientInsertCmd.ExecuteNonQuery();
+
+                    // Get the generated ClienteID
+                    long clienteID = clientInsertCmd.LastInsertedId;
+
+                    // Step 2: Lookup ServiçoID and PacoteID by name
+                    long serviçoID = LookupServiçoIDByName(serviceName);
+                    long pacoteID = LookupPacoteIDByName(packageName);
+
+                    // Step 3: Insert associations into the 'clienteserviços' and 'clientepacote' tables
+                    string serviçoInsertQuery = "INSERT INTO clienteserviços (ClienteID, ServiçoID) VALUES (@ClienteID, @ServiçoID)";
+                    using (MySqlCommand serviçoInsertCmd = new MySqlCommand(serviçoInsertQuery, connection))
                     {
-                        adapter.Fill(dataTable);
+                        serviçoInsertCmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        serviçoInsertCmd.Parameters.AddWithValue("@ServiçoID", serviçoID);
+                        serviçoInsertCmd.ExecuteNonQuery();
+                    }
+
+                    string pacoteInsertQuery = "INSERT INTO clientepacote (ClienteID, PacoteID) VALUES (@ClienteID, @PacoteID)";
+                    using (MySqlCommand pacoteInsertCmd = new MySqlCommand(pacoteInsertQuery, connection))
+                    {
+                        pacoteInsertCmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        pacoteInsertCmd.Parameters.AddWithValue("@PacoteID", pacoteID);
+                        pacoteInsertCmd.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Handle exceptions here, e.g., log or display an error message.
                 Console.WriteLine("Error: " + ex.Message);
+                MessageBox.Show("Alguma coisa não tá batendo", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 CloseConnection();
             }
-
-            return dataTable;
         }
 
-        public void InsertDataIntoTestando(Cliente cliente)
+
+        // Helper function to look up ServiçoID by name
+        private long LookupServiçoIDByName(string serviceName)
         {
-            string query = "INSERT INTO testando (`Nome`, `Apelido`, `Cliente Tipo`) VALUES (@Nome, @apelido, @clietipo)";
-
-            try
+            string query = "SELECT ServiçoID FROM serviços WHERE `Tipo de Serviço` = @ServiceName";
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
-                OpenConnection();
-
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@nome", cliente.Nome);
-                    cmd.Parameters.AddWithValue("@apelido", cliente.Apelido);
-                    cmd.Parameters.AddWithValue("@clietipo", cliente.ClienteTipo);
-
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.Parameters.AddWithValue("@ServiceName", serviceName);
+                return Convert.ToInt64(cmd.ExecuteScalar());
             }
-            catch (Exception ex)
+        }
+
+        // Helper function to look up PacoteID by name
+        private long LookupPacoteIDByName(string packageName)
+        {
+            string query = "SELECT PacoteID FROM pacotes WHERE Pacote = @PackageName";
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
-                // Handle exceptions here, e.g., log or display an error message.
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                CloseConnection();
+                cmd.Parameters.AddWithValue("@PackageName", packageName);
+                return Convert.ToInt64(cmd.ExecuteScalar());
             }
         }
     }

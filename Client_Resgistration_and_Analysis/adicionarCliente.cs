@@ -38,11 +38,6 @@ namespace GestaoEAnaliseClientes
 
         }
 
-        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -50,29 +45,62 @@ namespace GestaoEAnaliseClientes
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            // Criar um objeto Cliente com os valores dos campos
+            // Capture the selected service and package names from your user interface controls
+            string serviceName = tservico.Text;
+            string packageName = pacote.Text;
+
+
+
+            // Create a new instance of the Cliente class
             Cliente novoCliente = new Cliente
             {
                 Nome = fname.Text,
                 Apelido = lname.Text,
-                ClienteTipo = clienteTipo.Text
+                ClienteTipo = clienteTipo.Text,
+                Região = regiao.Text,
+                Endereço = address.Text
             };
 
-            // Chamar o método InsertDataIntoTestando com o objeto Cliente
-            c.InsertDataIntoTestando(novoCliente);
+            // Check if any of the required fields are empty
+            if (string.IsNullOrEmpty(novoCliente.Nome) || string.IsNullOrEmpty(novoCliente.Apelido) || string.IsNullOrEmpty(novoCliente.ClienteTipo) || string.IsNullOrEmpty(serviceName) || string.IsNullOrEmpty(packageName))
+            {
+                MessageBox.Show("Por favor, preencha todos os campos obrigatórios.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Insert the client data into the 'clientes' table and associate with the service and package
+            c.InsertDataIntoTestando(novoCliente, serviceName, packageName);
+
+            // Trigger the DataInserted event
             OnDataInserted(EventArgs.Empty);
 
-            this.Close(); // Fechar o formulário adicionarCliente
+            // Close the adicionarCliente form
+            this.Close();
         }
 
 
 
         protected virtual void OnDataInserted(EventArgs e)
         {
-            DataInserted?.Invoke(this, e);
+            if (DataInserted != null)
+            {
+                DataInserted(this, e);
+            }
         }
 
+        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
+        {
+            // Fazer alguma coisa
+        }
 
+        private void fname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void address_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

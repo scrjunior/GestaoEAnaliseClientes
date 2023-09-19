@@ -19,7 +19,7 @@ namespace GestaoEAnaliseClientes
             LoadDataIntoDataGridView();
         }
 
-        Queries c = new Queries();
+        QueriesSelect c = new QueriesSelect();
 
         public void LoadDataIntoDataGridView()
         {

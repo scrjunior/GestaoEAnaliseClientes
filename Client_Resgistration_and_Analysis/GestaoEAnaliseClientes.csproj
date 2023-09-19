@@ -115,6 +115,7 @@
     <Compile Include="clientes.Designer.cs">
       <DependentUpon>clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="dao\QueriesSelect.cs" />
     <Compile Include="dao\Queries.cs" />
     <Compile Include="dashboard.cs">
       <SubType>Form</SubType>

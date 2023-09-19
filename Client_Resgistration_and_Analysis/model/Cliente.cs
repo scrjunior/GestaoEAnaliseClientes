@@ -1,22 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoEAnaliseClientes.model
 {
     internal class Cliente
     {
-        private int id;
+        private int clienteID;
         private string nome;
         private string apelido;
         private string clienteTipo;
+        private string região;
+        private string endereço;
+        private int pacoteID; 
+        private int serviçoID; 
 
-        public int Id
+        public int ClienteID
         {
-            get { return id; }
-            set { id = value; }
+            get { return clienteID; }
+            set { clienteID = value; }
         }
 
         public string Nome
@@ -37,18 +37,46 @@ namespace GestaoEAnaliseClientes.model
             set { clienteTipo = value; }
         }
 
-        public Cliente()
+        public string Região
         {
-            // Construtor vazio
+            get { return região; }
+            set { região = value; }
         }
 
-        public Cliente(int id, string nome, string apelido, string clienteTipo)
+        public string Endereço
         {
-            this.id = id;
+            get { return endereço; }
+            set { endereço = value; }
+        }
+
+        public int PacoteID 
+        {
+            get { return pacoteID; }
+            set { pacoteID = value; }
+        }
+
+        public int ServiçoID 
+        {
+            get { return serviçoID; }
+            set { serviçoID = value; }
+        }
+
+        public Cliente()
+        {
+            // Constructor
+        }
+
+        public Cliente(int clienteID, string nome, string apelido, string clienteTipo, string região, string endereço, int pacoteID, int serviçoID) 
+        {
+            this.clienteID = clienteID;
             this.nome = nome;
             this.apelido = apelido;
             this.clienteTipo = clienteTipo;
+            this.região = região;
+            this.endereço = endereço;
+            this.pacoteID = pacoteID; 
+            this.serviçoID = serviçoID; 
+            
         }
     }
 }
-
