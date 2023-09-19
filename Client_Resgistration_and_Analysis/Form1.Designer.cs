@@ -52,7 +52,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1300, 42);
+            this.panel2.Size = new System.Drawing.Size(1366, 42);
             this.panel2.TabIndex = 1;
             // 
             // guna2Button4
@@ -70,10 +70,10 @@
             this.guna2Button4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.guna2Button4.HoverState.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button4.Location = new System.Drawing.Point(1262, -6);
+            this.guna2Button4.Location = new System.Drawing.Point(1319, -6);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.PressedColor = System.Drawing.Color.Red;
-            this.guna2Button4.Size = new System.Drawing.Size(38, 48);
+            this.guna2Button4.Size = new System.Drawing.Size(47, 48);
             this.guna2Button4.TabIndex = 7;
             this.guna2Button4.Text = "x";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
@@ -110,8 +110,8 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 42);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(30, 60, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(240, 678);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(20, 60, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(187, 726);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // guna2Button1
@@ -127,10 +127,10 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = global::GestaoEAnaliseClientes.Properties.Resources.board;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(33, 63);
+            this.guna2Button1.Location = new System.Drawing.Point(23, 63);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(207, 45);
+            this.guna2Button1.Size = new System.Drawing.Size(164, 45);
             this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Text = "Dashboard";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -150,9 +150,9 @@
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = global::GestaoEAnaliseClientes.Properties.Resources.customer;
             this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.Location = new System.Drawing.Point(33, 116);
+            this.guna2Button2.Location = new System.Drawing.Point(23, 116);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(207, 45);
+            this.guna2Button2.Size = new System.Drawing.Size(164, 45);
             this.guna2Button2.TabIndex = 5;
             this.guna2Button2.Text = "Clientes";
             this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -172,9 +172,9 @@
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = global::GestaoEAnaliseClientes.Properties.Resources.clipboard;
             this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.Location = new System.Drawing.Point(33, 167);
+            this.guna2Button3.Location = new System.Drawing.Point(23, 167);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(207, 45);
+            this.guna2Button3.Size = new System.Drawing.Size(164, 45);
             this.guna2Button3.TabIndex = 6;
             this.guna2Button3.Text = "Processos";
             this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -183,16 +183,17 @@
             // 
             // mainpanel
             // 
-            this.mainpanel.Location = new System.Drawing.Point(240, 42);
+            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainpanel.Location = new System.Drawing.Point(187, 42);
             this.mainpanel.Name = "mainpanel";
-            this.mainpanel.Size = new System.Drawing.Size(1060, 678);
+            this.mainpanel.Size = new System.Drawing.Size(1179, 726);
             this.mainpanel.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1300, 720);
+            this.ClientSize = new System.Drawing.Size(1366, 768);
             this.Controls.Add(this.mainpanel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);

@@ -102,5 +102,10 @@ namespace GestaoEAnaliseClientes
         {
 
         }
+
+        private void pacote_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

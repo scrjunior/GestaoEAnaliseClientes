@@ -175,8 +175,8 @@
             this.clienteTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.clienteTipo.ItemHeight = 23;
             this.clienteTipo.Items.AddRange(new object[] {
-            "Sociedade Anonima",
-            "Empresa Publica",
+            "SA",
+            "E.Publica",
             "Individual",
             "ONG"});
             this.clienteTipo.Location = new System.Drawing.Point(157, 202);
@@ -258,12 +258,16 @@
             this.pacote.ItemHeight = 23;
             this.pacote.Items.AddRange(new object[] {
             "Ilimitado",
-            "Ilimitado Básico",
-            "Limitado"});
+            "Limitado",
+            "Ilimitado Simples",
+            "Pequeno",
+            "Medio",
+            "Grande"});
             this.pacote.Location = new System.Drawing.Point(532, 202);
             this.pacote.Name = "pacote";
             this.pacote.Size = new System.Drawing.Size(204, 29);
             this.pacote.TabIndex = 30;
+            this.pacote.SelectedIndexChanged += new System.EventHandler(this.pacote_SelectedIndexChanged);
             // 
             // guna2HtmlLabel4
             // 

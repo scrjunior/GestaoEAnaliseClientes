@@ -37,7 +37,7 @@ namespace GestaoEAnaliseClientes.dao
         public DataTable GetTestDataFromTestando()
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT c.Nome, c.Apelido, c.clienteTipo, c.Região, c.Endereço, s.`Tipo de Serviço`, p.Pacote " +
+            string query = "SELECT c.Nome, c.Apelido, c.`Tipo de Cliente`, c.Região, c.Endereço, s.`Tipo de Serviço`, p.Pacote, p.Tarifa, `Data de Cadastro` " +
                     "FROM clientes c " +
                     "LEFT JOIN clienteserviços cs ON c.ClienteID = cs.ClienteID " +
                     "LEFT JOIN serviços s ON cs.ServiçoID = s.ServiçoID " +

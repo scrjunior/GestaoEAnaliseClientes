@@ -43,7 +43,7 @@ namespace GestaoEAnaliseClientes.dao
                 OpenConnection();
 
                 // Step 1: Insert client data into the 'clientes' table
-                string clientInsertQuery = "INSERT INTO clientes (`Nome`, `Apelido`, `clienteTipo`, `Região`, `Endereço`) VALUES (@Nome, @Apelido, @ClienteTipo, @Região, @Endereço)";
+                string clientInsertQuery = "INSERT INTO clientes (`Nome`, `Apelido`, `Tipo de Cliente`, `Região`, `Endereço`) VALUES (@Nome, @Apelido, @ClienteTipo, @Região, @Endereço)";
                 using (MySqlCommand clientInsertCmd = new MySqlCommand(clientInsertQuery, connection))
                 {
                     clientInsertCmd.Parameters.AddWithValue("@Nome", cliente.Nome);
