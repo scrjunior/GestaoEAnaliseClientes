@@ -54,7 +54,51 @@ namespace GestaoEAnaliseClientes
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            // Check if a row is selected
+            if (tableview.SelectedRows.Count > 0)
+            {
+                // Confirm deletion with the user
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this client?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = tableview.SelectedRows[0];
+
+                    // Retrieve the client's name from the selected row's cells (assuming it's stored in a specific cell)
+                    string clientName = selectedRow.Cells["Nome"].Value.ToString(); // Replace "ClientNameColumn" with the actual column name
+
+                    // Create an instance of the DeleteData class
+                    DeleteData deleteData = new DeleteData();
+
+                    // Call the modified DeleteClientByName method that takes the client's name as a parameter
+                    bool deletionSuccessful = deleteData.DeleteClientByName(clientName);
+
+                    if (deletionSuccessful)
+                    {
+                        // Remove the selected row from the table
+                        tableview.Rows.Remove(selectedRow);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete the client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a client to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        private void atualizar_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the atualizarCliente form
+            atualizarCliente updateForm = new atualizarCliente();
+
+            // Show the atualizarCliente form
+            updateForm.ShowDialog();
+        }
+
     }
 }

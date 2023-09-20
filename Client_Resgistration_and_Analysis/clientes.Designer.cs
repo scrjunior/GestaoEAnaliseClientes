@@ -100,6 +100,7 @@
             this.tableview.Location = new System.Drawing.Point(21, 162);
             this.tableview.Name = "tableview";
             this.tableview.ReadOnly = true;
+            this.tableview.RowHeadersVisible = false;
             this.tableview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -164,6 +165,7 @@
             this.atualizar.Size = new System.Drawing.Size(165, 36);
             this.atualizar.TabIndex = 9;
             this.atualizar.Text = "Actualizar";
+            this.atualizar.Click += new System.EventHandler(this.atualizar_Click);
             // 
             // clientes
             // 

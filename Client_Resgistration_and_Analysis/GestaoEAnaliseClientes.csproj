@@ -109,12 +109,19 @@
     <Compile Include="adicionarCliente.Designer.cs">
       <DependentUpon>adicionarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="atualizarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="atualizarCliente.Designer.cs">
+      <DependentUpon>atualizarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="clientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="clientes.Designer.cs">
       <DependentUpon>clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="dao\DeleteData.cs" />
     <Compile Include="dao\QueriesSelect.cs" />
     <Compile Include="dao\Queries.cs" />
     <Compile Include="dashboard.cs">
@@ -141,6 +148,9 @@
     <Compile Include="util\DBConnect.cs" />
     <EmbeddedResource Include="adicionarCliente.resx">
       <DependentUpon>adicionarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="atualizarCliente.resx">
+      <DependentUpon>atualizarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clientes.resx">
       <DependentUpon>clientes.cs</DependentUpon>

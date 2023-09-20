@@ -148,3 +148,4 @@ C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClie
 C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.csproj.CopyComplete
 C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.exe
 C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.pdb
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.atualizarCliente.resources
