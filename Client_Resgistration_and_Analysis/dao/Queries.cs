@@ -92,6 +92,68 @@ namespace GestaoEAnaliseClientes.dao
         }
 
 
+        public void UpdateDataInTestando(long clienteID, Cliente updatedCliente, string serviceName, string packageName)
+        {
+            MySqlTransaction transaction = null;
+
+            try
+            {
+                OpenConnection();
+
+                // Start a database transaction
+                transaction = connection.BeginTransaction();
+
+                // Step 1: Update client data in the 'clientes' table
+                string clientUpdateQuery = "UPDATE clientes SET Nome = @Nome, Apelido = @Apelido, `Tipo de Cliente` = @ClienteTipo, Região = @Região, Endereço = @Endereço WHERE ClienteID = @ClienteID";
+                using (MySqlCommand clientUpdateCmd = new MySqlCommand(clientUpdateQuery, connection))
+                {
+                    clientUpdateCmd.Parameters.AddWithValue("@Nome", updatedCliente.Nome);
+                    clientUpdateCmd.Parameters.AddWithValue("@Apelido", updatedCliente.Apelido);
+                    clientUpdateCmd.Parameters.AddWithValue("@ClienteTipo", updatedCliente.ClienteTipo);
+                    clientUpdateCmd.Parameters.AddWithValue("@Região", updatedCliente.Região);
+                    clientUpdateCmd.Parameters.AddWithValue("@Endereço", updatedCliente.Endereço);
+                    clientUpdateCmd.Parameters.AddWithValue("@ClienteID", clienteID);
+
+                    // Execute the client update query
+                    clientUpdateCmd.ExecuteNonQuery();
+                }
+
+                // Step 2: Update associations with services and packages as needed
+                // Example: Update associations in 'clienteserviços' and 'clientepacote' tables
+                string updateServiçosQuery = "UPDATE clienteserviços SET ServiçoID = @ServiçoID WHERE ClienteID = @ClienteID";
+                using (MySqlCommand updateServiçosCmd = new MySqlCommand(updateServiçosQuery, connection))
+                {
+                    updateServiçosCmd.Parameters.AddWithValue("@ServiçoID", LookupServiçoIDByName(serviceName));
+                    updateServiçosCmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                    updateServiçosCmd.ExecuteNonQuery();
+                }
+
+                string updatePacotesQuery = "UPDATE clientepacote SET PacoteID = @PacoteID WHERE ClienteID = @ClienteID";
+                using (MySqlCommand updatePacotesCmd = new MySqlCommand(updatePacotesQuery, connection))
+                {
+                    updatePacotesCmd.Parameters.AddWithValue("@PacoteID", LookupPacoteIDByName(packageName));
+                    updatePacotesCmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                    updatePacotesCmd.ExecuteNonQuery();
+                }
+
+                // Commit the transaction if all updates are successful
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                MessageBox.Show("Something went wrong while updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Rollback the transaction if an error occurs
+                transaction?.Rollback();
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
         // Helper function to look up ServiçoID by name
         private long LookupServiçoIDByName(string serviceName)
         {
@@ -113,5 +175,44 @@ namespace GestaoEAnaliseClientes.dao
                 return Convert.ToInt64(cmd.ExecuteScalar());
             }
         }
+
+        public long GetClienteIDByNome(string nome)
+        {
+            try
+            {
+                OpenConnection();
+
+                string query = "SELECT ClienteID FROM clientes WHERE Nome = @Nome";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", nome);
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        // Parse the result to a long and return it
+                        return Convert.ToInt64(result);
+                    }
+                    else
+                    {
+                        // Handle the case where the query didn't return any results
+                        // You can throw an exception or return a default value depending on your application logic
+                        throw new Exception("Cliente not found by name: " + nome);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                // Handle the exception or log it as needed
+                throw;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
     }
 }

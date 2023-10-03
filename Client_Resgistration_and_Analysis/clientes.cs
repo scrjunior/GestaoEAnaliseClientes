@@ -44,7 +44,7 @@ namespace GestaoEAnaliseClientes
 
         private void tableview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Handle DataGridView cell click events if needed
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -93,12 +93,42 @@ namespace GestaoEAnaliseClientes
 
         private void atualizar_Click(object sender, EventArgs e)
         {
-            // Create an instance of the atualizarCliente form
-            atualizarCliente updateForm = new atualizarCliente();
+            // Check if a row is selected
+            if (tableview.SelectedRows.Count > 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = tableview.SelectedRows[0];
 
-            // Show the atualizarCliente form
-            updateForm.ShowDialog();
+                // Retrieve data from the selected row's cells
+                string nome = selectedRow.Cells["Nome"].Value.ToString();
+                string apelido = selectedRow.Cells["Apelido"].Value.ToString();
+                string tservico = selectedRow.Cells["Tipo de Serviço"].Value.ToString();
+                string clienteTipo = selectedRow.Cells["Tipo de Cliente"].Value.ToString();
+                string região = selectedRow.Cells["Região"].Value.ToString();
+                string endereço = selectedRow.Cells["Endereço"].Value.ToString();
+                string pacote = selectedRow.Cells["Pacote"].Value.ToString();
+
+                // Create an instance of the atualizarCliente form
+                atualizarCliente updateForm = new atualizarCliente();
+
+                // Populate the textboxes on the update form with the captured data
+                updateForm.Nome = nome;
+                updateForm.Tserviço = tservico;
+                updateForm.Apelido = apelido;
+                updateForm.ClienteTipo = clienteTipo;
+                updateForm.Região = região;
+                updateForm.Pacote = pacote;
+                updateForm.Endereço = endereço;
+
+                // Show the atualizarCliente form
+                updateForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a client to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
 
     }
 }

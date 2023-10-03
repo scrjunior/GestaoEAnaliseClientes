@@ -12,6 +12,8 @@ namespace GestaoEAnaliseClientes.model
         private string endereço;
         private int pacoteID; 
         private int serviçoID; 
+        private string pacote;
+        private string serviço;
 
         public int ClienteID
         {
@@ -60,6 +62,18 @@ namespace GestaoEAnaliseClientes.model
             get { return serviçoID; }
             set { serviçoID = value; }
         }
+        public string Pacote
+        {
+            get { return pacote; }
+            set { pacote = value; }
+        }
+
+        public string Serviço
+        {
+            get { return serviço; }
+            set { serviço = value; }
+        }
+        
 
         public Cliente()
         {
@@ -76,6 +90,7 @@ namespace GestaoEAnaliseClientes.model
             this.endereço = endereço;
             this.pacoteID = pacoteID; 
             this.serviçoID = serviçoID; 
+
             
         }
     }

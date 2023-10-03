@@ -124,6 +124,7 @@
     <Compile Include="dao\DeleteData.cs" />
     <Compile Include="dao\QueriesSelect.cs" />
     <Compile Include="dao\Queries.cs" />
+    <Compile Include="dao\UpdateQueries.cs" />
     <Compile Include="dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
