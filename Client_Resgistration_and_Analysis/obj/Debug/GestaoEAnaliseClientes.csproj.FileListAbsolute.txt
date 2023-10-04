@@ -149,3 +149,12 @@ C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClie
 C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.exe
 C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.pdb
 C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\obj\Debug\GestaoEAnaliseClientes.atualizarCliente.resources
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.dll
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.pdb
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.xml
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Sacrifício Júnior\source\learning\Clients_Analysis\GestaoEAnaliseClientes\Client_Resgistration_and_Analysis\bin\Debug\LiveCharts.Wpf.xml
