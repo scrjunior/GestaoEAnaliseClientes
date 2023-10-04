@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.fnamee = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SuspendLayout();
             // 
             // pacote
@@ -341,12 +342,20 @@
             this.guna2HtmlLabel5.TabIndex = 49;
             this.guna2HtmlLabel5.Text = "Novo Nome";
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Location = new System.Drawing.Point(71, 78);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(325, 66);
+            this.guna2Panel1.TabIndex = 50;
+            // 
             // atualizarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(819, 532);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2HtmlLabel5);
             this.Controls.Add(this.fnamee);
             this.Controls.Add(this.label1);
@@ -396,5 +405,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox fnamee;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

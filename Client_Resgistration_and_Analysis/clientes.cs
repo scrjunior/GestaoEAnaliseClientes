@@ -41,6 +41,10 @@ namespace GestaoEAnaliseClientes
         {
             LoadDataIntoDataGridView();
         }
+        private void AtualizarCliente_DataUpdated(object sender, EventArgs e)
+        {
+            LoadDataIntoDataGridView();
+        }
 
         private void tableview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -113,6 +117,7 @@ namespace GestaoEAnaliseClientes
 
                 // Populate the textboxes on the update form with the captured data
                 updateForm.Nome = nome;
+                updateForm.Nomee = nome;
                 updateForm.Tserviço = tservico;
                 updateForm.Apelido = apelido;
                 updateForm.ClienteTipo = clienteTipo;
@@ -121,6 +126,7 @@ namespace GestaoEAnaliseClientes
                 updateForm.Endereço = endereço;
 
                 // Show the atualizarCliente form
+                updateForm.DataUpdated += AtualizarCliente_DataUpdated;
                 updateForm.ShowDialog();
             }
             else
@@ -128,6 +134,7 @@ namespace GestaoEAnaliseClientes
                 MessageBox.Show("Please select a client to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
 
 
     }

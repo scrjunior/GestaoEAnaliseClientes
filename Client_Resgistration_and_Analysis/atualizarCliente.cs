@@ -7,12 +7,20 @@ namespace GestaoEAnaliseClientes
 {
     public partial class atualizarCliente : Form
     {
+        public event EventHandler DataUpdated;
+
         private Queries c = new Queries(); // Initialize the Queries class
 
         public string Nome
         {
             get { return fname.Text; }
             set { fname.Text = value; }
+        }
+
+        public string Nomee
+        {
+            get { return fnamee.Text; }
+            set { fnamee.Text = value; }
         }
 
         public string Apelido
@@ -97,10 +105,19 @@ namespace GestaoEAnaliseClientes
 
             c.UpdateDataInTestando(clienteID, updatedCliente, serviceName, packageName);
 
-            
+            OnDataUpdated(EventArgs.Empty);
 
             this.Close();
         }
+
+        protected virtual void OnDataUpdated(EventArgs e)
+        {
+            if (DataUpdated != null)
+            {
+                DataUpdated(this, e);
+            }
+        }
+
 
     }
 }
