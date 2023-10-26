@@ -1,4 +1,5 @@
-﻿using GestaoEAnaliseClientes.util;
+﻿using GestaoEAnaliseClientes.model;
+using GestaoEAnaliseClientes.util;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace GestaoEAnaliseClientes.dao
             DBConnect db = new DBConnect();
             string connectionString = db.GetConnectionString();
             connection = new MySqlConnection(connectionString);
+        }
+
+        public class ServicoCliente
+        {
+            public string Servico { get; set; }
+            public int ClienteCount { get; set; }
         }
 
         public void OpenConnection()
@@ -114,6 +121,46 @@ namespace GestaoEAnaliseClientes.dao
             }
 
             return ticketMedio;
+        }
+
+
+        public List<ServicoCliente> GetClientesPorServico()
+        {
+            List<ServicoCliente> servicoClientes = new List<ServicoCliente>();
+
+            string query = "SELECT s.`Tipo de Serviço` AS Servico, COUNT(cs.ClienteServiçoID) AS ClienteCount " +
+                           "FROM serviços s " +
+                           "LEFT JOIN clienteserviços cs ON s.ServiçoID = cs.ServiçoID " +
+                           "GROUP BY s.ServiçoID";
+
+            try
+            {
+                OpenConnection();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ServicoCliente servicoCliente = new ServicoCliente
+                        {
+                            Servico = reader["Servico"].ToString(),
+                            ClienteCount = Convert.ToInt32(reader["ClienteCount"])
+                        };
+                        servicoClientes.Add(servicoCliente);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return servicoClientes;
         }
 
 

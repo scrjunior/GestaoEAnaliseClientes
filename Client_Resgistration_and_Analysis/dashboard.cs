@@ -1,4 +1,7 @@
 ﻿using GestaoEAnaliseClientes.dao;
+using GestaoEAnaliseClientes.model;
+using LiveCharts;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +10,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using System.Windows.Forms;
+using SeriesCollection = LiveCharts.SeriesCollection;
+using LiveCharts.Wpf;
+using System.Windows.Forms.DataVisualization.Charting;
+using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 
 namespace GestaoEAnaliseClientes
 {
@@ -19,21 +27,76 @@ namespace GestaoEAnaliseClientes
             ExibirTotalClientes();
             ExibirTotalTarifas();
             ExibirTicketMedio();
+            ExibirClientesPorServico();
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
 
         private void dashboard_Load(object sender, EventArgs e)
         {
             // Atualizar automaticamente o número total de clientes ao carregar o formulário
             ExibirTotalClientes();
+            
+
         }
+
+
+
+
+        private void ExibirClientesPorServico()
+        {
+            // Create an instance of the Analisando class
+            Analisando analisando = new Analisando();
+
+            try
+            {
+                // Open the database connection
+                analisando.OpenConnection();
+
+                // Get the number of clients per service
+                var servicoClientes = analisando.GetClientesPorServico();
+
+                // Create data series for the chart
+                SeriesCollection seriesCollection = new SeriesCollection();
+
+                foreach (var servicoCliente in servicoClientes)
+                {
+                    seriesCollection.Add(new ColumnSeries
+                    {
+                        Title = servicoCliente.Servico,
+                        Values = new ChartValues<int> { servicoCliente.ClienteCount },
+                        DataLabels = true // Habilita a exibição de rótulos
+                    });
+                }
+
+                // Create the chart with the data series
+                cartesianChart1.Series = seriesCollection;
+
+                // Optionally, configure the appearance of the chart
+                cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
+                {
+                    Title = "Serviço"
+                });
+
+                cartesianChart1.AxisY.Add(new LiveCharts.Wpf.Axis
+                {
+                    Title = "Número de Clientes"
+                });
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions, if necessary
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                // Ensure that the connection is closed
+                analisando.CloseConnection();
+            }
+        }
+
+
+
+
 
         private void ExibirTotalClientes()
         {
@@ -64,11 +127,6 @@ namespace GestaoEAnaliseClientes
         }
 
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ExibirTotalTarifas()
         {
             // Criar uma instância da classe Analisando
@@ -98,6 +156,8 @@ namespace GestaoEAnaliseClientes
                 // Certificar-se de fechar a conexão
                 analisando.CloseConnection();
             }
+
+
         }
 
 
@@ -132,13 +192,8 @@ namespace GestaoEAnaliseClientes
             }
         }
 
+
+
         
-        
-
-
-        private void pieChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
     }
 }
