@@ -63,6 +63,36 @@ namespace GestaoEAnaliseClientes.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap analytic {
+            get {
+                object obj = ResourceManager.GetObject("analytic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap analytic__1_ {
+            get {
+                object obj = ResourceManager.GetObject("analytic (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap analytics {
+            get {
+                object obj = ResourceManager.GetObject("analytics", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap board {
             get {
                 object obj = ResourceManager.GetObject("board", resourceCulture);
@@ -166,6 +196,16 @@ namespace GestaoEAnaliseClientes.Properties {
         internal static System.Drawing.Bitmap money__1_ {
             get {
                 object obj = ResourceManager.GetObject("money (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap signal_tower {
+            get {
+                object obj = ResourceManager.GetObject("signal-tower", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -26,6 +26,7 @@ namespace GestaoEAnaliseClientes.dao
         {
             public string Servico { get; set; }
             public int ClienteCount { get; set; }
+            public string Regiao { get; set; }
         }
 
         public void OpenConnection()
@@ -161,6 +162,90 @@ namespace GestaoEAnaliseClientes.dao
             }
 
             return servicoClientes;
+        }
+
+        public class PacoteCliente
+        {
+            public string Pacote { get; set; }
+            public int ClienteCount { get; set; }
+        }
+
+
+        public List<PacoteCliente> GetClientesPorPacote()
+        {
+            List<PacoteCliente> pacoteClientes = new List<PacoteCliente>();
+
+            string query = "SELECT p.Pacote AS Pacote, COUNT(cp.ClientePacoteID) AS ClienteCount " +
+                           "FROM pacotes p " +
+                           "LEFT JOIN clientepacote cp ON p.PacoteID = cp.PacoteID " +
+                           "GROUP BY p.PacoteID";
+
+            try
+            {
+                OpenConnection();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PacoteCliente pacoteCliente = new PacoteCliente
+                        {
+                            Pacote = reader["Pacote"].ToString(),
+                            ClienteCount = Convert.ToInt32(reader["ClienteCount"])
+                        };
+                        pacoteClientes.Add(pacoteCliente);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return pacoteClientes;
+        }
+
+        public List<ServicoCliente> GetClientesPorRegiao()
+        {
+            List<ServicoCliente> regiaoClientes = new List<ServicoCliente>();
+
+            string query = "SELECT c.Região AS Região, COUNT(c.ClienteID) AS ClienteCount " +
+                           "FROM clientes c " +
+                           "GROUP BY c.Região";
+
+            try
+            {
+                OpenConnection();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ServicoCliente regiaoCliente = new ServicoCliente
+                        {
+                            Regiao = reader["Região"].ToString(),
+                            ClienteCount = Convert.ToInt32(reader["ClienteCount"])
+                        };
+                        regiaoClientes.Add(regiaoCliente);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return regiaoClientes;
         }
 
 

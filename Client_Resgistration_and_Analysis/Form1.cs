@@ -17,7 +17,8 @@ namespace GestaoEAnaliseClientes
         public Form1()
         {
             InitializeComponent();
-            
+            loadform(new dashboard());
+
         }
 
         public void loadform(object Form)
