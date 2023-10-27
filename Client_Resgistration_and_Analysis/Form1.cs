@@ -17,7 +17,8 @@ namespace GestaoEAnaliseClientes
         public Form1()
         {
             InitializeComponent();
-            loadform(new dashboard());
+
+            flowLayoutPanel1.Visible = false;
 
         }
 
@@ -62,7 +63,28 @@ namespace GestaoEAnaliseClientes
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            loadform(new processos());
+            string usuario = usuariot.Text;
+            string senha = senhat.Text;
+
+            login loginDao = new login();
+
+            if (loginDao.VerificarCredenciais(usuario, senha))
+            {
+               
+                loadform(new dashboard());
+                loginpanel.Visible = false;
+                flowLayoutPanel1.Visible = true;
+
+
+            }
+            else
+            {
+                MessageBox.Show("Login falhou. Verifique suas credenciais e tente novamente.");
+            }
         }
+
+
+
+
     }
 }

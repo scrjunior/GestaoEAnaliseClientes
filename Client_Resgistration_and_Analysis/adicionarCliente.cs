@@ -45,13 +45,13 @@ namespace GestaoEAnaliseClientes
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            // Capture the selected service and package names from your user interface controls
+            
             string serviceName = tservico.Text;
             string packageName = pacote.Text;
 
 
 
-            // Create a new instance of the Cliente class
+            
             Cliente novoCliente = new Cliente
             {
                 Nome = fname.Text,
@@ -61,20 +61,21 @@ namespace GestaoEAnaliseClientes
                 Endereço = address.Text
             };
 
-            // Check if any of the required fields are empty
+            
             if (string.IsNullOrEmpty(novoCliente.Nome) || string.IsNullOrEmpty(novoCliente.Apelido) || string.IsNullOrEmpty(novoCliente.ClienteTipo) || string.IsNullOrEmpty(serviceName) || string.IsNullOrEmpty(packageName))
             {
                 MessageBox.Show("Por favor, preencha todos os campos obrigatórios.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Insert the client data into the 'clientes' table and associate with the service and package
+            
             c.InsertDataIntoTestando(novoCliente, serviceName, packageName);
 
-            // Trigger the DataInserted event
+            MessageBox.Show("Cliente adicionado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             OnDataInserted(EventArgs.Empty);
 
-            // Close the adicionarCliente form
+            
             this.Close();
         }
 

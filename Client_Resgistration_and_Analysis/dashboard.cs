@@ -35,7 +35,7 @@ namespace GestaoEAnaliseClientes
 
         private void dashboard_Load(object sender, EventArgs e)
         {
-            // Atualizar automaticamente o número total de clientes ao carregar o formulário
+            
             ExibirTotalClientes();
             
 
@@ -43,18 +43,18 @@ namespace GestaoEAnaliseClientes
 
         private void ExibirClientesPorRegiao()
         {
-            // Create an instance of the Analisando class
+            
             Analisando analisando = new Analisando();
 
             try
             {
-                // Open the database connection
+                
                 analisando.OpenConnection();
 
-                // Get the number of clients per region
+                
                 var regiaoClientes = analisando.GetClientesPorRegiao();
 
-                // Create data series for the chart
+                
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 foreach (var regiaoCliente in regiaoClientes)
@@ -63,40 +63,40 @@ namespace GestaoEAnaliseClientes
                     {
                         Title = regiaoCliente.Regiao,
                         Values = new ChartValues<int> { regiaoCliente.ClienteCount },
-                        DataLabels = true // Enable data labels
+                        DataLabels = true 
                     });
                 }
 
-                // Create the chart with the data series
+                
                 cartesianChart3.Series = seriesCollection;
 
-                // Optionally, configure the appearance of the chart
+                
                 cartesianChart3.AxisX.Add(new LiveCharts.Wpf.Axis
                 {
                     Title = "Região",
                     
                     
-                    Separator = new LiveCharts.Wpf.Separator(), // Permite ajustar a aparência do rótulo
-                    FontSize = 14 // Define o tamanho da fonte do título
+                    Separator = new LiveCharts.Wpf.Separator(), 
+                    FontSize = 14 
                 });
 
                 cartesianChart3.AxisY.Add(new LiveCharts.Wpf.Axis
                 {
                     Title = "Número de Clientes",
                     
-                    Separator = new LiveCharts.Wpf.Separator(), // Permite ajustar a aparência do rótulo
-                    FontSize = 14 // Define o tamanho da fonte do título
+                    Separator = new LiveCharts.Wpf.Separator(), 
+                    FontSize = 14 
                 });
 
             }
             catch (Exception ex)
             {
-                // Handle exceptions, if necessary
+                
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
-                // Ensure that the connection is closed
+                
                 analisando.CloseConnection();
             }
         }
@@ -104,18 +104,18 @@ namespace GestaoEAnaliseClientes
 
         private void ExibirClientesPorPacote()
         {
-            // Create an instance of the Analisando class
+            
             Analisando analisando = new Analisando();
 
             try
             {
-                // Open the database connection
+                
                 analisando.OpenConnection();
 
-                // Get the number of clients per package
+                
                 var pacoteClientes = analisando.GetClientesPorPacote();
 
-                // Create data series for the chart
+                
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 foreach (var pacoteCliente in pacoteClientes)
@@ -124,36 +124,36 @@ namespace GestaoEAnaliseClientes
                     {
                         Title = pacoteCliente.Pacote,
                         Values = new ChartValues<int> { pacoteCliente.ClienteCount },
-                        DataLabels = true // Enable data labels
+                        DataLabels = true 
                     });
                 }
 
-                // Create the chart with the data series
+                
                 cartesianChart2.Series = seriesCollection;
 
-                // Optionally, configure the appearance of the chart
+                
                 cartesianChart2.AxisX.Add(new LiveCharts.Wpf.Axis
                 {
                     Title = "Pacote",
-                    Separator = new LiveCharts.Wpf.Separator(), // Permite ajustar a aparência do rótulo
-                    FontSize = 14 // Define o tamanho da fonte do título
+                    Separator = new LiveCharts.Wpf.Separator(), 
+                    FontSize = 14 
                 });
 
                 cartesianChart2.AxisY.Add(new LiveCharts.Wpf.Axis
                 {
                     Title = "Número de Clientes",
-                    Separator = new LiveCharts.Wpf.Separator(), // Permite ajustar a aparência do rótulo
-                    FontSize = 14 // Define o tamanho da fonte do título
+                    Separator = new LiveCharts.Wpf.Separator(), 
+                    FontSize = 14 
                 });
             }
             catch (Exception ex)
             {
-                // Handle exceptions, if necessary
+                
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
-                // Ensure that the connection is closed
+                
                 analisando.CloseConnection();
             }
         }
@@ -162,18 +162,18 @@ namespace GestaoEAnaliseClientes
 
         private void ExibirClientesPorServico()
         {
-            // Create an instance of the Analisando class
+            
             Analisando analisando = new Analisando();
 
             try
             {
-                // Open the database connection
+                
                 analisando.OpenConnection();
 
-                // Get the number of clients per service
+                
                 var servicoClientes = analisando.GetClientesPorServico();
 
-                // Create data series for the chart
+                
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 foreach (var servicoCliente in servicoClientes)
@@ -182,36 +182,36 @@ namespace GestaoEAnaliseClientes
                     {
                         Title = servicoCliente.Servico,
                         Values = new ChartValues<int> { servicoCliente.ClienteCount },
-                        DataLabels = true // Habilita a exibição de rótulos
+                        DataLabels = true 
                     });
                 }
 
-                // Create the chart with the data series
+                
                 cartesianChart1.Series = seriesCollection;
 
-                // Optionally, configure the appearance of the chart
+                
                 cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
                 {
                     Title = "Serviço",
-                    Separator = new LiveCharts.Wpf.Separator(), // Permite ajustar a aparência do rótulo
-                    FontSize = 14 // Define o tamanho da fonte do título
+                    Separator = new LiveCharts.Wpf.Separator(), 
+                    FontSize = 14 
                 });
 
                 cartesianChart1.AxisY.Add(new LiveCharts.Wpf.Axis
                 {
                     Title = "Número de Clientes",
-                    Separator = new LiveCharts.Wpf.Separator(), // Permite ajustar a aparência do rótulo
-                    FontSize = 14 // Define o tamanho da fonte do título
+                    Separator = new LiveCharts.Wpf.Separator(), 
+                    FontSize = 14 
                 });
             }
             catch (Exception ex)
             {
-                // Handle exceptions, if necessary
+                
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
-                // Ensure that the connection is closed
+                
                 analisando.CloseConnection();
             }
         }
@@ -222,28 +222,28 @@ namespace GestaoEAnaliseClientes
 
         private void ExibirTotalClientes()
         {
-            // Criar uma instância da classe Analisando
+            
             Analisando analisando = new Analisando();
 
             try
             {
-                // Abrir a conexão com o banco de dados
+                
                 analisando.OpenConnection();
 
-                // Obter o número total de clientes
+                
                 int totalClientes = analisando.GetTotalClientes();
 
-                // Atualizar a label "ctotal" com o número total de clientes
+                
                 ctotal.Text = "" + totalClientes;
             }
             catch (Exception ex)
             {
-                // Lidar com exceções, se necessário
+                
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
-                // Certificar-se de fechar a conexão
+                
                 analisando.CloseConnection();
             }
         }
@@ -251,31 +251,31 @@ namespace GestaoEAnaliseClientes
 
         private void ExibirTotalTarifas()
         {
-            // Criar uma instância da classe Analisando
+            
             Analisando analisando = new Analisando();
 
             try
             {
-                // Abrir a conexão com o banco de dados
+                
                 analisando.OpenConnection();
 
-                // Obter a soma das tarifas
+                
                 decimal totalTarifas = analisando.GetTotalTarifas();
 
-                // Formatar o total das tarifas para incluir "MZN"
+                
                 string totalTarifasFormatado = totalTarifas.ToString("0.00") + " mzn";
 
-                // Atualizar a label ou outro controle com o total de tarifas formatado
+                
                 ttarifa.Text = totalTarifasFormatado;
             }
             catch (Exception ex)
             {
-                // Lidar com exceções, se necessário
+                
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
-                // Certificar-se de fechar a conexão
+                
                 analisando.CloseConnection();
             }
 
@@ -285,31 +285,31 @@ namespace GestaoEAnaliseClientes
 
         private void ExibirTicketMedio()
         {
-            // Criar uma instância da classe Analisando
+            
             Analisando analisando = new Analisando();
 
             try
             {
-                // Abrir a conexão com o banco de dados
+                
                 analisando.OpenConnection();
 
-                // Obter o ticket médio das tarifas
+                
                 decimal ticketMedio = analisando.GetTicketMedioTarifa();
 
-                // Formatar o ticket médio para exibir apenas dois dígitos após o ponto decimal
+                
                 string ticketMedioFormatado = ticketMedio.ToString("0.00") + " mzn";
 
-                // Atualizar a label ou outro controle com o ticket médio formatado
+                
                 tmedio.Text = ticketMedioFormatado;
             }
             catch (Exception ex)
             {
-                // Lidar com exceções, se necessário
+                
                 Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
-                // Certificar-se de fechar a conexão
+                
                 analisando.CloseConnection();
             }
         }

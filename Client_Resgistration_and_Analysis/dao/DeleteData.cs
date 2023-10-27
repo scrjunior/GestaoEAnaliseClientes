@@ -40,7 +40,7 @@ namespace GestaoEAnaliseClientes.dao
             {
                 OpenConnection();
 
-                // Perform the client deletion based on the provided clientName
+                
                 string deleteQuery = "DELETE FROM clientes WHERE Nome = @ClientName";
                 using (MySqlCommand cmd = new MySqlCommand(deleteQuery, connection))
                 {
@@ -48,14 +48,14 @@ namespace GestaoEAnaliseClientes.dao
                     cmd.ExecuteNonQuery();
                 }
 
-                // Return true to indicate successful deletion
+                
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
                 MessageBox.Show("Failed to delete the client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false; // Return false to indicate an error
+                return false; 
             }
             finally
             {

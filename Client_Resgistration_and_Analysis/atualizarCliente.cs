@@ -9,7 +9,7 @@ namespace GestaoEAnaliseClientes
     {
         public event EventHandler DataUpdated;
 
-        private Queries c = new Queries(); // Initialize the Queries class
+        private Queries c = new Queries(); 
 
         public string Nome
         {
@@ -71,7 +71,7 @@ namespace GestaoEAnaliseClientes
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            // Capture the updated client data from your user interface controls
+            
             string updatedNome = fnamee.Text;
             string originalNome = fname.Text;
             string updatedApelido = lname.Text;
@@ -79,19 +79,19 @@ namespace GestaoEAnaliseClientes
             string updatedRegião = regiao.Text;
             string updatedEndereço = address.Text;
 
-            // Capture the selected service and package names from your user interface controls
+            
             string serviceName = tservico.Text;
             string packageName = pacote.Text;
 
-            // Check if any of the required fields are empty
+            
             if (string.IsNullOrEmpty(updatedNome) || string.IsNullOrEmpty(updatedApelido) || string.IsNullOrEmpty(updatedClienteTipo) || string.IsNullOrEmpty(updatedRegião) || string.IsNullOrEmpty(updatedEndereço) || string.IsNullOrEmpty(serviceName) || string.IsNullOrEmpty(packageName))
             {
                 MessageBox.Show("Por favor, preencha todos os campos obrigatórios.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Call the UpdateDataInTestando method to update the client data and associations
-            long clienteID = c.GetClienteIDByNome(originalNome); // Use originalNome here to locate the client
+            
+            long clienteID = c.GetClienteIDByNome(originalNome); 
             Cliente updatedCliente = new Cliente
             {
                 Nome = updatedNome,
@@ -101,7 +101,7 @@ namespace GestaoEAnaliseClientes
                 Endereço = updatedEndereço
             };
 
-            // Perform the update in the 'clientes' table (update the name here)
+            
 
             c.UpdateDataInTestando(clienteID, updatedCliente, serviceName, packageName);
 

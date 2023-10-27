@@ -42,7 +42,7 @@ namespace GestaoEAnaliseClientes.dao
             {
                 OpenConnection();
 
-                // Step 1: Insert client data into the 'clientes' table
+                
                 string clientInsertQuery = "INSERT INTO clientes (`Nome`, `Apelido`, `Tipo de Cliente`, `Região`, `Endereço`) VALUES (@Nome, @Apelido, @ClienteTipo, @Região, @Endereço)";
                 using (MySqlCommand clientInsertCmd = new MySqlCommand(clientInsertQuery, connection))
                 {
@@ -52,17 +52,17 @@ namespace GestaoEAnaliseClientes.dao
                     clientInsertCmd.Parameters.AddWithValue("@Região", cliente.Região);
                     clientInsertCmd.Parameters.AddWithValue("@Endereço", cliente.Endereço);
 
-                    // Execute the client insertion query
+                    
                     clientInsertCmd.ExecuteNonQuery();
 
-                    // Get the generated ClienteID
+                    
                     long clienteID = clientInsertCmd.LastInsertedId;
 
-                    // Step 2: Lookup ServiçoID and PacoteID by name
+                    
                     long serviçoID = LookupServiçoIDByName(serviceName);
                     long pacoteID = LookupPacoteIDByName(packageName);
 
-                    // Step 3: Insert associations into the 'clienteserviços' and 'clientepacote' tables
+                    
                     string serviçoInsertQuery = "INSERT INTO clienteserviços (ClienteID, ServiçoID) VALUES (@ClienteID, @ServiçoID)";
                     using (MySqlCommand serviçoInsertCmd = new MySqlCommand(serviçoInsertQuery, connection))
                     {
@@ -100,10 +100,10 @@ namespace GestaoEAnaliseClientes.dao
             {
                 OpenConnection();
 
-                // Start a database transaction
+                
                 transaction = connection.BeginTransaction();
 
-                // Step 1: Update client data in the 'clientes' table
+                
                 string clientUpdateQuery = "UPDATE clientes SET Nome = @Nome, Apelido = @Apelido, `Tipo de Cliente` = @ClienteTipo, Região = @Região, Endereço = @Endereço WHERE ClienteID = @ClienteID";
                 using (MySqlCommand clientUpdateCmd = new MySqlCommand(clientUpdateQuery, connection))
                 {
@@ -114,12 +114,11 @@ namespace GestaoEAnaliseClientes.dao
                     clientUpdateCmd.Parameters.AddWithValue("@Endereço", updatedCliente.Endereço);
                     clientUpdateCmd.Parameters.AddWithValue("@ClienteID", clienteID);
 
-                    // Execute the client update query
+                    
                     clientUpdateCmd.ExecuteNonQuery();
                 }
 
-                // Step 2: Update associations with services and packages as needed
-                // Example: Update associations in 'clienteserviços' and 'clientepacote' tables
+                
                 string updateServiçosQuery = "UPDATE clienteserviços SET ServiçoID = @ServiçoID WHERE ClienteID = @ClienteID";
                 using (MySqlCommand updateServiçosCmd = new MySqlCommand(updateServiçosQuery, connection))
                 {
@@ -136,7 +135,7 @@ namespace GestaoEAnaliseClientes.dao
                     updatePacotesCmd.ExecuteNonQuery();
                 }
 
-                // Commit the transaction if all updates are successful
+                
                 transaction.Commit();
             }
             catch (Exception ex)
@@ -144,7 +143,7 @@ namespace GestaoEAnaliseClientes.dao
                 Console.WriteLine("Error: " + ex.Message);
                 MessageBox.Show("Something went wrong while updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // Rollback the transaction if an error occurs
+                
                 transaction?.Rollback();
             }
             finally
@@ -154,7 +153,7 @@ namespace GestaoEAnaliseClientes.dao
         }
 
 
-        // Helper function to look up ServiçoID by name
+        
         private long LookupServiçoIDByName(string serviceName)
         {
             string query = "SELECT ServiçoID FROM serviços WHERE `Tipo de Serviço` = @ServiceName";
@@ -165,7 +164,7 @@ namespace GestaoEAnaliseClientes.dao
             }
         }
 
-        // Helper function to look up PacoteID by name
+        
         private long LookupPacoteIDByName(string packageName)
         {
             string query = "SELECT PacoteID FROM pacotes WHERE Pacote = @PackageName";
@@ -190,13 +189,13 @@ namespace GestaoEAnaliseClientes.dao
 
                     if (result != null)
                     {
-                        // Parse the result to a long and return it
+                        
                         return Convert.ToInt64(result);
                     }
                     else
                     {
-                        // Handle the case where the query didn't return any results
-                        // You can throw an exception or return a default value depending on your application logic
+                        
+                        
                         throw new Exception("Cliente not found by name: " + nome);
                     }
                 }
@@ -204,7 +203,7 @@ namespace GestaoEAnaliseClientes.dao
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                // Handle the exception or log it as needed
+                
                 throw;
             }
             finally

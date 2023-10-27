@@ -31,16 +31,21 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mainpanel = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mainpanel = new System.Windows.Forms.Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.usuariot = new Guna.UI2.WinForms.Guna2TextBox();
+            this.senhat = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Entrar = new Guna.UI2.WinForms.Guna2Button();
+            this.loginpanel = new Guna.UI2.WinForms.Guna2Panel();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.mainpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.loginpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -90,6 +95,17 @@
             this.label1.Text = "Sistema Integrado de Gestão e Analise de Clientes - SIGAC";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Image = global::GestaoEAnaliseClientes.Properties.Resources.analytic;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -101,15 +117,6 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(20, 100, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(187, 726);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // mainpanel
-            // 
-            this.mainpanel.Controls.Add(this.guna2Button3);
-            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainpanel.Location = new System.Drawing.Point(187, 42);
-            this.mainpanel.Name = "mainpanel";
-            this.mainpanel.Size = new System.Drawing.Size(1179, 726);
-            this.mainpanel.TabIndex = 3;
             // 
             // guna2Button1
             // 
@@ -156,38 +163,101 @@
             this.guna2Button2.TextOffset = new System.Drawing.Point(5, 0);
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
             // 
-            // guna2Button3
+            // mainpanel
             // 
-            this.guna2Button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.guna2Button3.BackgroundImage = global::GestaoEAnaliseClientes.Properties.Resources.board;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Image = global::GestaoEAnaliseClientes.Properties.Resources.clipboard;
-            this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.Location = new System.Drawing.Point(291, 152);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(164, 45);
-            this.guna2Button3.TabIndex = 6;
-            this.guna2Button3.Text = "Processos";
-            this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.TextOffset = new System.Drawing.Point(5, 0);
-            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            this.mainpanel.Controls.Add(this.loginpanel);
+            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainpanel.Location = new System.Drawing.Point(187, 42);
+            this.mainpanel.Name = "mainpanel";
+            this.mainpanel.Size = new System.Drawing.Size(1179, 726);
+            this.mainpanel.TabIndex = 3;
             // 
-            // pictureBox1
+            // guna2HtmlLabel1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.Image = global::GestaoEAnaliseClientes.Properties.Resources.analytic;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(116, 47);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(164, 67);
+            this.guna2HtmlLabel1.TabIndex = 51;
+            this.guna2HtmlLabel1.Text = "LOG IN";
+            this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // usuariot
+            // 
+            this.usuariot.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.usuariot.DefaultText = "";
+            this.usuariot.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.usuariot.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.usuariot.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.usuariot.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.usuariot.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.usuariot.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuariot.ForeColor = System.Drawing.Color.Black;
+            this.usuariot.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.usuariot.Location = new System.Drawing.Point(65, 121);
+            this.usuariot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.usuariot.Name = "usuariot";
+            this.usuariot.PasswordChar = '\0';
+            this.usuariot.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.usuariot.PlaceholderText = "Usuario";
+            this.usuariot.SelectedText = "";
+            this.usuariot.Size = new System.Drawing.Size(267, 42);
+            this.usuariot.TabIndex = 50;
+            // 
+            // senhat
+            // 
+            this.senhat.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.senhat.DefaultText = "";
+            this.senhat.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.senhat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.senhat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.senhat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.senhat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.senhat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.senhat.ForeColor = System.Drawing.Color.Black;
+            this.senhat.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.senhat.Location = new System.Drawing.Point(65, 180);
+            this.senhat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.senhat.Name = "senhat";
+            this.senhat.PasswordChar = '●';
+            this.senhat.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.senhat.PlaceholderText = "Senha";
+            this.senhat.SelectedText = "";
+            this.senhat.Size = new System.Drawing.Size(267, 42);
+            this.senhat.TabIndex = 49;
+            this.senhat.UseSystemPasswordChar = true;
+            // 
+            // Entrar
+            // 
+            this.Entrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.Entrar.BackgroundImage = global::GestaoEAnaliseClientes.Properties.Resources.board;
+            this.Entrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Entrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Entrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Entrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Entrar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.Entrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.Entrar.ForeColor = System.Drawing.Color.White;
+            this.Entrar.Location = new System.Drawing.Point(65, 239);
+            this.Entrar.Name = "Entrar";
+            this.Entrar.Size = new System.Drawing.Size(267, 42);
+            this.Entrar.TabIndex = 6;
+            this.Entrar.Text = "Entrar";
+            this.Entrar.TextOffset = new System.Drawing.Point(5, 0);
+            this.Entrar.Click += new System.EventHandler(this.guna2Button3_Click);
+            // 
+            // loginpanel
+            // 
+            this.loginpanel.Controls.Add(this.usuariot);
+            this.loginpanel.Controls.Add(this.guna2HtmlLabel1);
+            this.loginpanel.Controls.Add(this.Entrar);
+            this.loginpanel.Controls.Add(this.senhat);
+            this.loginpanel.Location = new System.Drawing.Point(485, 199);
+            this.loginpanel.Name = "loginpanel";
+            this.loginpanel.Size = new System.Drawing.Size(397, 328);
+            this.loginpanel.TabIndex = 52;
             // 
             // Form1
             // 
@@ -204,9 +274,11 @@
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.mainpanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.loginpanel.ResumeLayout(false);
+            this.loginpanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -218,9 +290,13 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button Entrar;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private System.Windows.Forms.Panel mainpanel;
+        private Guna.UI2.WinForms.Guna2TextBox usuariot;
+        private Guna.UI2.WinForms.Guna2TextBox senhat;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2Panel loginpanel;
     }
 }
 
